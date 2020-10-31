@@ -6,6 +6,7 @@ Use the https://attestation-covid.web.app/ website to generate pdf.
 from os import getenv
 import json
 from pathlib import Path
+from time import sleep
 
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.remote.webelement import WebElement
@@ -74,6 +75,8 @@ def main(driver: WebDriver):
     todo = generate_todo()
     worker = Worker(filler, todo)
     worker.work()
+    while not len(list(Path(".").glob("*.pdf"))):
+        sleep(0.1)
 
 
 if __name__ == '__main__':
