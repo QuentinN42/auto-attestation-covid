@@ -17,6 +17,14 @@ def json_load(path: Path) -> dict:
         return json.load(f)
 
 
+def get_pdf():
+    pdfs = list(Path(".").glob("*.pdf"))
+    if not pdfs:
+        return None
+    else:
+        return pdfs[0]
+
+
 def generate_todo():
     di = dict()
     env_vars_str = json_load(Path("env_vars_str.json"))
@@ -75,7 +83,7 @@ def main(driver: WebDriver):
     todo = generate_todo()
     worker = Worker(filler, todo)
     worker.work()
-    while not len(list(Path(".").glob("*.pdf"))):
+    while get_pdf() is None:
         sleep(0.1)
 
 
