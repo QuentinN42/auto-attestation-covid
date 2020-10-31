@@ -1,0 +1,21 @@
+{
+    "firstname": "//*[@id=\"field-firstname\"]",
+    "lastname": "//*[@id=\"field-lastname\"]",
+    "birthday": "//*[@id=\"field-birthday\"]",
+    "placeofbirth": "//*[@id=\"field-placeofbirth\"]",
+    "address": "//*[@id=\"field-address\"]",
+    "city": "//*[@id=\"field-city\"]",
+    "zipcode": "//*[@id=\"field-zipcode\"]",
+    "datesortie": "//*[@id=\"field-datesortie\"]",
+    "heuresortie": "//*[@id=\"field-heuresortie\"]",
+    "duree": "//*[@id=\"field-duree\"]",
+    "travail": "//*[@id=\"checkbox-travail\"]",
+    "achats": "//*[@id=\"checkbox-achats\"]",
+    "sante": "//*[@id=\"checkbox-sante\"]",
+    "famille": "//*[@id=\"checkbox-famille\"]",
+    "handicap": "//*[@id=\"checkbox-handicap\"]",
+    "sport_animaux": "//*[@id=\"checkbox-sport_animaux\"]",
+    "convocation": "//*[@id=\"checkbox-convocation\"]",
+    "missions": "//*[@id=\"checkbox-missions\"]",
+    "enfants": "//*[@id=\"checkbox-enfants\"]"
+}
