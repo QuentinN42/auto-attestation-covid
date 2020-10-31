@@ -23,7 +23,7 @@ def generate_todo():
     for var in env_vars_str:
         di[var] = getenv(var.upper(), "")
     for var in env_vars_bool:
-        di[var] = getenv(var.upper(), False)
+        di[var] = bool(getenv(var.upper(), 0))
     return di
 
 
