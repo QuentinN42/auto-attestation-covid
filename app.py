@@ -3,17 +3,28 @@
 Use the https://attestation-covid.web.app/ website to generate pdf.
 
 """
-from json import loads as json_load
+import json
+import yaml
 from pathlib import Path
 
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.remote.webelement import WebElement
 
 
+def json_load(path: Path) -> dict:
+    with open(path) as f:
+        return json.load(f)
+
+
+def yaml_load(path: Path) -> dict:
+    with open(path) as f:
+        return yaml.safe_load(f)
+
+
 class Filler:
     def __init__(self, driver: WebDriver, xpaths_file: Path = Path("xpaths.json")):
         self.driver = driver
-        self.xpaths = json_load(xpaths_file.read_text())
+        self.xpaths: dict = json_load(xpaths_file)
 
     def _get_element(self, field: str) -> WebElement:
         try:
@@ -31,6 +42,27 @@ class Filler:
         self._get_element(field).send_keys(content)
 
 
+class Worker:
+    def __init__(self, filler: Filler, todo: dict):
+        self.filler: Filler = filler
+        self.todo: dict = todo
+
+    def generate(self):
+        self.filler.validate("generate")
+
+    def work_one(self, field, action):
+        if action is True:
+            self.filler.validate(field)
+        elif isinstance(action, str):
+            self.filler.fill(field, action)
+
+    def work(self):
+        for field, action in self.todo.items():
+            self.work_one(field, action)
+        self.generate()
+
+
 def main(driver: WebDriver):
     driver.get('https://attestation-covid.web.app/')
     filler = Filler(driver)
+    

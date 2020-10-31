@@ -17,5 +17,6 @@
     "sport_animaux": "//*[@id=\"checkbox-sport_animaux\"]",
     "convocation": "//*[@id=\"checkbox-convocation\"]",
     "missions": "//*[@id=\"checkbox-missions\"]",
-    "enfants": "//*[@id=\"checkbox-enfants\"]"
+    "enfants": "//*[@id=\"checkbox-enfants\"]",
+    "generate": "//*[@id=\"generate-btn\"]"
 }
