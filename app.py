@@ -59,7 +59,7 @@ class Worker:
     def work_one(self, field, action):
         if action is True:
             self.filler.validate(field)
-        elif isinstance(action, str):
+        elif isinstance(action, str) and action != "":
             self.filler.fill(field, action)
 
     def work(self):
