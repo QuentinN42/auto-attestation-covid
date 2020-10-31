@@ -1,0 +1,12 @@
+[
+    "firstname",
+    "lastname",
+    "birthday",
+    "placeofbirth",
+    "address",
+    "city",
+    "zipcode",
+    "datesortie",
+    "heuresortie",
+    "duree"
+]
