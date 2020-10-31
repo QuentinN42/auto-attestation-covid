@@ -3,10 +3,11 @@
 Use the https://attestation-covid.web.app/ website to generate pdf.
 
 """
-from selenium.webdriver.chrome.webdriver import WebDriver
-from selenium.webdriver.remote.webelement import WebElement
 from json import loads as json_load
 from pathlib import Path
+
+from selenium.webdriver.chrome.webdriver import WebDriver
+from selenium.webdriver.remote.webelement import WebElement
 
 
 class Filler:
