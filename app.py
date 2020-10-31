@@ -74,3 +74,10 @@ def main(driver: WebDriver):
     todo = generate_todo()
     worker = Worker(filler, todo)
     worker.work()
+
+
+if __name__ == '__main__':
+    from selenium import webdriver
+    from dotenv import load_dotenv
+    load_dotenv()
+    main(webdriver.Chrome())
