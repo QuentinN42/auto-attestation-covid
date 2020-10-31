@@ -4,7 +4,6 @@ Use the https://attestation-covid.web.app/ website to generate pdf.
 
 """
 import json
-import yaml
 from pathlib import Path
 
 from selenium.webdriver.chrome.webdriver import WebDriver
@@ -14,11 +13,6 @@ from selenium.webdriver.remote.webelement import WebElement
 def json_load(path: Path) -> dict:
     with open(path) as f:
         return json.load(f)
-
-
-def yaml_load(path: Path) -> dict:
-    with open(path) as f:
-        return yaml.safe_load(f)
 
 
 class Filler:
@@ -65,4 +59,5 @@ class Worker:
 def main(driver: WebDriver):
     driver.get('https://attestation-covid.web.app/')
     filler = Filler(driver)
-    
+    worker = Worker(filler, json_load(Path("todo.json")))
+    worker.work()
