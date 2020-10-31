@@ -7,6 +7,7 @@ from os import getenv
 import json
 from pathlib import Path
 from time import sleep
+import shutil
 
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.remote.webelement import WebElement
@@ -85,6 +86,7 @@ def main(driver: WebDriver):
     worker.work()
     while get_pdf() is None:
         sleep(0.1)
+    shutil.move(str(get_pdf()), Path("./out/"))
 
 
 if __name__ == '__main__':
