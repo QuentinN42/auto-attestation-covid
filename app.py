@@ -3,6 +3,7 @@
 Use the https://attestation-covid.web.app/ website to generate pdf.
 
 """
+from os import getenv
 import json
 from pathlib import Path
 
@@ -13,6 +14,17 @@ from selenium.webdriver.remote.webelement import WebElement
 def json_load(path: Path) -> dict:
     with open(path) as f:
         return json.load(f)
+
+
+def generate_todo():
+    di = dict()
+    env_vars_str = json_load(Path("env_vars_str.json"))
+    env_vars_bool = json_load(Path("env_vars_bool.json"))
+    for var in env_vars_str:
+        di[var] = getenv(var.upper(), "")
+    for var in env_vars_bool:
+        di[var] = getenv(var.upper(), False)
+    return di
 
 
 class Filler:
@@ -57,7 +69,8 @@ class Worker:
 
 
 def main(driver: WebDriver):
-    driver.get('https://attestation-covid.web.app/')
+    driver.get("https://attestation-covid.web.app/")
     filler = Filler(driver)
-    worker = Worker(filler, json_load(Path("todo.json")))
+    todo = generate_todo()
+    worker = Worker(filler, todo)
     worker.work()
