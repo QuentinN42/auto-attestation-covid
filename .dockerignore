@@ -1,0 +1,8 @@
+exemple
+.gitignore
+.git
+.env
+.idea
+README.md
+CONTRIBUTING.md
+venv
